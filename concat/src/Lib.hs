@@ -39,7 +39,15 @@ copyFileWithConvert src dst convert = loop
           loop
 
 
-foreachLineAndAppend src dst ioAction = loop
+foreachLineAndAppend :: Handle -> Handle -> (String -> IO String) -> IO ()
+foreachLineAndAppend src dst ioAction =
+  foreachLine src $ \line -> do
+    output <- ioAction line
+    hPutStrLn dst output
+
+
+foreachLine :: Handle -> (String -> IO ()) -> IO ()
+foreachLine src ioAction = loop
   where
     loop = do
       isEof <- hIsEOF src
@@ -47,6 +55,5 @@ foreachLineAndAppend src dst ioAction = loop
         then return ()
         else do
           line <- hGetLine src
-          outputLine <- ioAction line
-          hPutStrLn dst outputLine
+          ioAction line
           loop
