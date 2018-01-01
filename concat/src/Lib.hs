@@ -37,3 +37,16 @@ copyFileWithConvert src dst convert = loop
           line <- hGetLine src
           hPutStrLn dst (convert line)
           loop
+
+
+foreachLineAndAppend src dst ioAction = loop
+  where
+    loop = do
+      isEof <- hIsEOF src
+      if isEof
+        then return ()
+        else do
+          line <- hGetLine src
+          outputLine <- ioAction line
+          hPutStrLn dst outputLine
+          loop
