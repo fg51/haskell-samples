@@ -23,7 +23,11 @@ concatMultiFiles filePaths dst =
 
 
 copyFile :: Handle -> Handle -> IO ()
-copyFile src dst = loop
+copyFile src dst = copyFileWithConvert src dst id
+
+
+copyFileWithConvert :: Handle -> Handle -> (String -> String) -> IO ()
+copyFileWithConvert src dst convert = loop
   where
     loop = do
       isEof <- hIsEOF src
@@ -31,5 +35,5 @@ copyFile src dst = loop
         then return ()
         else do
           line <- hGetLine src
-          hPutStrLn dst line
+          hPutStrLn dst (convert line)
           loop
