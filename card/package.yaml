@@ -1,0 +1,40 @@
+name:                card
+version:             0.0.0.1
+#synopsis:
+#description:
+homepage:            https://github.com/githubuser/card#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2017 Author name here
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - transformers
+
+library:
+  source-dirs:
+    - src
+
+executables:
+  card:
+    source-dirs:      app
+    main:             Main.hs
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+    dependencies:
+      - card
+
+tests:
+  card-test:
+    source-dirs:      test
+    main:             Spec.hs
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+    dependencies:
+      - card
+      - hspec
+      - QuickCheck
+
+github: githubuser/card

@@ -1,0 +1,64 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: e30574d3d76a79b42226b4954da0e928e3f9617ec3868e1a6f813138a633e25b
+
+name:           bar
+version:        0.0.0.1
+category:       Web
+homepage:       https://github.com/githubuser/bar#readme
+bug-reports:    https://github.com/githubuser/bar/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2017 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/bar
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_bar
+  default-language: Haskell2010
+
+executable bar
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      bar
+    , base >=4.7 && <5
+  other-modules:
+      Paths_bar
+  default-language: Haskell2010
+
+test-suite bar-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , bar
+    , base >=4.7 && <5
+    , hspec
+  other-modules:
+      LibSpec
+      Paths_bar
+  default-language: Haskell2010

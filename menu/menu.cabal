@@ -1,0 +1,64 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 673b79f4eb99b93da6847f15de6609c4e67c1b87f7f965e2b45c5393d51548a3
+
+name:           menu
+version:        0.0.0.1
+category:       Web
+homepage:       https://github.com/githubuser/menu#readme
+bug-reports:    https://github.com/githubuser/menu/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2017 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/menu
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_menu
+  default-language: Haskell2010
+
+executable menu
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , menu
+  other-modules:
+      Paths_menu
+  default-language: Haskell2010
+
+test-suite menu-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , base >=4.7 && <5
+    , hspec
+    , menu
+  other-modules:
+      LibSpec
+      Paths_menu
+  default-language: Haskell2010
