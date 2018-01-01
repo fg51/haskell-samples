@@ -1,0 +1,40 @@
+name:                safe-ex
+version:             0.0.0.1
+#synopsis:
+#description:
+homepage:            https://github.com/githubuser/safe-ex#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2018 Author name here
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - transformers
+
+library:
+  source-dirs:
+    - src
+
+executables:
+  safe-ex:
+    source-dirs:      app
+    main:             Main.hs
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+    dependencies:
+      - safe-ex
+
+tests:
+  safe-ex-test:
+    source-dirs:      test
+    main:             Spec.hs
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+    dependencies:
+      - safe-ex
+      - hspec
+      - QuickCheck
+
+github: githubuser/safe-ex
