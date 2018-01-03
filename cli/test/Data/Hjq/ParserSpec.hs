@@ -14,9 +14,14 @@ main = hspec spec
 spec :: Spec
 spec = do
   describe "parseJqFilter" $ do
-    it "with \".\" return JpNil" $ do
+    it "with \".\" return Right JpNil" $ do
       P.parseJqFilter "." `shouldBe` Right P.JqNil
 
-  -- describe "decode" $ \xs ->
-  --   prop "reverses encoded string" \xs ->
-  --     decode (encode xs) == xs
+    it "with \".[0]\" return Right JqIndex 0 JpNil" $ do
+      P.parseJqFilter ".[0]" `shouldBe` Right (P.JqIndex 0 P.JqNil)
+
+    it "with \".fieldName\" return Right JqField \"fieldName\" JqNil" $ do
+      P.parseJqFilter ".fieldName" `shouldBe` Right (P.JqField "fieldName" P.JqNil)
+
+    it "with \".[0].fieldName\" return Right JqIndex 0 (JqField \"fieldName\" JqNil)" $ do
+      P.parseJqFilter ".[0].fieldName" `shouldBe` Right (P.JqIndex 0 (P.JqField "fieldName" P.JqNil))

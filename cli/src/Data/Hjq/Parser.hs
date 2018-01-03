@@ -1,5 +1,4 @@
-module Data.Hjq.Parser where
--- module Data.Hjq.Parser (JqFilter(..), parseJqFilter) where
+module Data.Hjq.Parser (JqFilter(..), parseJqFilter) where
 
 import Data.Text
 
