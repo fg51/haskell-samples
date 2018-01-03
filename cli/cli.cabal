@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 41c13c50cf8d4bedb006875e54031b8dc980b0fbf1114d1bf3ebecf8b9bd76b3
+-- hash: 921de01c4b13bb5baebd5322cb8ef3e8b529911ca1423ffa65e12b3a3dec6e30
 
 name:           cli
 version:        0.0.0.1
@@ -28,7 +28,8 @@ library
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      attoparsec
+    , base >=4.7 && <5
     , text
   exposed-modules:
       Data.Hjq.Parser
@@ -43,7 +44,8 @@ executable cli
       app
   ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      attoparsec
+    , base >=4.7 && <5
     , cli
     , text
   other-modules:
@@ -58,6 +60,7 @@ test-suite cli-test
   ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
+    , attoparsec
     , base >=4.7 && <5
     , cli
     , hspec
