@@ -1,0 +1,69 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 48ff2f6d584870d5d214e61bdc03b98837d39bcc73dbde1ea75210acdb08e9b8
+
+name:           cli
+version:        0.0.0.1
+category:       Web
+homepage:       https://github.com/githubuser/cli#readme
+bug-reports:    https://github.com/githubuser/cli/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/cli
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , text
+  exposed-modules:
+      Data.Hjq.Parser
+      Lib
+  other-modules:
+      Paths_cli
+  default-language: Haskell2010
+
+executable cli
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , cli
+    , text
+  other-modules:
+      Paths_cli
+  default-language: Haskell2010
+
+test-suite cli-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , base >=4.7 && <5
+    , cli
+    , hspec
+    , text
+  other-modules:
+      Data.Hjq.ParserSpec
+      LibSpec
+      Paths_cli
+  default-language: Haskell2010

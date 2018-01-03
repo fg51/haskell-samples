@@ -1,0 +1,40 @@
+name:                cli
+version:             0.0.0.1
+#synopsis:
+#description:
+homepage:            https://github.com/githubuser/cli#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2018 Author name here
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - text
+
+library:
+  source-dirs:
+    - src
+
+executables:
+  cli:
+    source-dirs:      app
+    main:             Main.hs
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+    dependencies:
+      - cli
+
+tests:
+  cli-test:
+    source-dirs:      test
+    main:             Spec.hs
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+    dependencies:
+      - cli
+      - hspec
+      - QuickCheck
+
+github: githubuser/cli
