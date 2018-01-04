@@ -39,3 +39,13 @@ spec = do
 
     it "with \" . [ 0 ] . fieldName\" return Right JqIndex 0 (JqField \"fieldName\" JqNil)" $ do
       P.parseJqFilter " . [ 0 ] . fieldName" `shouldBe` Right (P.JqIndex 0 (P.JqField "fieldName" P.JqNil))
+
+
+  describe "parseJqQuery" $ do
+    it "with \"[]\" return Right (JpQueryArray [])" $ do
+      P.parseJqQuery "[]" `shouldBe` Right (P.JqQueryArray [])
+    it "with \"[.foo,.bar]\" return Right (JqQueryArray [JqQueryFilter (JqField \"foo\" JqNil), JqQueryFilter (JqField \"bar\" JqNil)])" $ do
+      P.parseJqQuery "[.foo,.bar]" `shouldBe` Right (P.JqQueryArray [P.JqQueryFilter (P.JqField "foo" P.JqNil), P.JqQueryFilter (P.JqField "bar" P.JqNil)])
+    it "with \"{\"foo\":[],\"bar\":[]}\" return Right (JqQueryObject [(\"foo\", JqQueryArray []), (\"bar\" JqQueryArray [])])" $ do
+      P.parseJqQuery "[.foo,.bar]" `shouldBe` Right (P.JqQueryArray [P.JqQueryFilter (P.JqField "foo" P.JqNil), P.JqQueryFilter (P.JqField "bar" P.JqNil)])
+      P.parseJqQuery "{\"foo\":[],\"bar\":[]}" `shouldBe` Right (P.JqQueryObject [("foo", P.JqQueryArray []), ("bar", P.JqQueryArray [])])
