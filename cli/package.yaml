@@ -16,6 +16,10 @@ dependencies:
   - text
   - attoparsec
   - lens-aeson
+  - aeson
+  - lens
+  - vector
+  - unordered-containers
 
 library:
   source-dirs:
