@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 921de01c4b13bb5baebd5322cb8ef3e8b529911ca1423ffa65e12b3a3dec6e30
+-- hash: a26209c22e291877858c3d4827ec595bc259e499ca64f0d6a59cec282bd02c8d
 
 name:           cli
 version:        0.0.0.1
@@ -30,6 +30,7 @@ library
   build-depends:
       attoparsec
     , base >=4.7 && <5
+    , lens-aeson
     , text
   exposed-modules:
       Data.Hjq.Parser
@@ -47,6 +48,7 @@ executable cli
       attoparsec
     , base >=4.7 && <5
     , cli
+    , lens-aeson
     , text
   other-modules:
       Paths_cli
@@ -64,6 +66,7 @@ test-suite cli-test
     , base >=4.7 && <5
     , cli
     , hspec
+    , lens-aeson
     , text
   other-modules:
       Data.Hjq.ParserSpec
